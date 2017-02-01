@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
+		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();	// ArrayList, holds all cards
 		for (int i = 0; i < 4; i++) // Loop through suits
 		{
 			for (int j = 0; j < 13; j++) // Loop through faces
