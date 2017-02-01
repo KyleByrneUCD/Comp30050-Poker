@@ -20,7 +20,7 @@ public class PlayingCard {
 		if (face == "A") // set gameValue for ace
 		{
 			gameValue = 14;
-		} else {
+		} else {		// set all other values
 			gameValue = value;
 		}
 	}
