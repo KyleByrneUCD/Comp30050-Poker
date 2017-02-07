@@ -26,10 +26,10 @@ public class Main {
 		System.out.println(deck.getDeck());		// Print Deck
 		for(int i = 0; i < 55; i++){			// Deal more cards than are available
 			card = deck.dealNext();			
-			System.out.println(card);			// It will be necessary later to prevent a 'null' card from entering a players hand
-			hand.add(card);						// ^ ... this is not required at this time  however.
+			System.out.println(card);
+			hand.add(card);			
 		}
-		System.out.println(deck.getDeck());		// Print Deck (will be empty)
+		System.out.println(deck.getDeck());		// Print Deck
 		deck.reset();							// Reset Deck
 		System.out.println(deck.getDeck());		// Print Deck
 		

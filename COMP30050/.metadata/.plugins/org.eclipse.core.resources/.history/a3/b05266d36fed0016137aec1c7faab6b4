@@ -67,8 +67,6 @@ public class DeckOfCards {
 	}
 
 	public synchronized void returnCard(PlayingCard discarded) {	// add a card back into the deck
-		if(discarded != null){
-			deck.add(discarded);
-		}
+		deck.add(discarded);
 	}
 }
