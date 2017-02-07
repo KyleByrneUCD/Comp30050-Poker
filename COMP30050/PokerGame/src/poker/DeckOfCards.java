@@ -1,0 +1,62 @@
+package poker;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class DeckOfCards {
+	public ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
+	DeckOfCards() {
+		createDeck();
+	}
+	
+	private void createDeck(){
+		for (int i = 0; i < 4; i++) {	// loop through suits
+			for (int j = 0; j < 13; j++) {	// loop through cards
+				switch (i) {	//switch statement. controls which suit each card gets
+				case 0:
+					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.HEARTS, j + 1));
+					break;
+				case 1:
+					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.DIAMONDS, j + 1));
+					break;
+				case 2:
+					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.CLUBS, j + 1));
+					break;
+				case 3:
+					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.SPADES, j + 1));
+					break;
+				}
+			}
+		}
+	}
+	public void reset(){
+		deck.removeAll(deck);
+		createDeck();
+		shuffle();
+	}
+	
+	public void shuffle(){
+		 Random randomNumber = new Random();
+		 for(int i = 0; i < deck.size()*deck.size(); i++)
+		 {
+			 int number1 = randomNumber.nextInt(deck.size());
+			 int number2 = randomNumber.nextInt(deck.size());
+			 PlayingCard temp = deck.get(number1);
+			 deck.set(number1, deck.get(number2));
+			 deck.set(number2, temp);
+		 }
+	}
+	
+	public PlayingCard dealNext(){
+		try{
+			return deck.remove(0);
+		}
+		catch(IndexOutOfBoundsException e){
+			System.err.println("There are no more Cards in the deck, unable to draw card.");
+			return null;
+		}
+	}
+	
+	public void returnCard(PlayingCard discarded){
+		deck.add(discarded);
+	}
+}
