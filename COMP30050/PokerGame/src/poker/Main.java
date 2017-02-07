@@ -5,34 +5,31 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();	// ArrayList, holds all cards
-		for (int i = 0; i < 4; i++) // Loop through suits
-		{
-			for (int j = 0; j < 13; j++) // Loop through faces
-			{
-				switch (i) // Creates Cards
-				{
-				case 0:
-					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.HEARTS, j + 1));
-					break;
-				case 1:
-					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.DIAMONDS, j + 1));
-					break;
-				case 2:
-					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.CLUBS, j + 1));
-					break;
-				case 3:
-					deck.add(new PlayingCard(PlayingCard.FACES[j], PlayingCard.SPADES, j + 1));
-					break;
-				}
-			}
+		ArrayList<PlayingCard> hand = new ArrayList<PlayingCard>();
+		DeckOfCards deck = new DeckOfCards();
+		System.out.println(deck.deck);
+		PlayingCard card = deck.dealNext();
+		System.out.println(card.toString());
+		deck.returnCard(card);
+		System.out.println(deck.deck);
+		deck.shuffle();
+		for(int i = 0; i < 5; i++){
+			hand.add(deck.dealNext());
 		}
-		System.out.println("Card\tGame Value\tFace Value");
-		for (PlayingCard card : deck) // Loop through all cards
-		{
-			System.out.println(card.toString() + "\t" + card.getGameValue() + "\t\t" + card.getFaceValue()); // print
-																												// card
+		System.out.println(deck.deck);
+		for(int i = 0; i < 5; i++){
+			deck.returnCard(hand.get(i));
 		}
+		System.out.println(deck.deck);
+		for(int i = 0; i < 55; i++){
+			hand.add(deck.dealNext());
+		}
+		System.out.println(deck.deck);
+		deck.reset();
+		System.out.println(deck.deck);
+		
+		// Print out all cards 
 	}
 
 }
+
