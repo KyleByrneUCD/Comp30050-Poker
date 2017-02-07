@@ -62,7 +62,7 @@ public class DeckOfCards {
 			return deck.remove(0);	// take the top card off of the deck
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("There are no more Cards in the deck, unable to draw card.");	
-			return null;
+			throw new IndexOutOfBoundsException();
 		}
 	}
 
